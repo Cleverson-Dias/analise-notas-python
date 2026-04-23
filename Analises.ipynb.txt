@@ -1,0 +1,123 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPpiGQ3K662Ns4YTVQ0rP44",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Cleverson-Dias/Algoritmos-FATEC/blob/main/Analises.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Criar um programa que:\n",
+        "# armazene várias notas\n",
+        "# analise os dados\n",
+        "# gere um pequeno “relatório”\n",
+        "\n",
+        "\n",
+        "notas = []\n",
+        "qtd = int(input(\"Quantas notas você quer inserir? \"))\n",
+        "\n",
+        "for i in range(qtd):\n",
+        "    while True:\n",
+        "        num = float(input(f\"Digite a {i+1}ª nota (0 a 10): \").replace(\",\", \".\"))\n",
+        "        if 0 <= num <= 10:\n",
+        "            notas.append(num)\n",
+        "            break\n",
+        "        else:\n",
+        "            print(\"Digite uma nota válida entre 0 e 10!\")\n",
+        "\n",
+        "# Processamento\n",
+        "media = sum(notas) / qtd\n",
+        "\n",
+        "maior = notas[0]\n",
+        "menor = notas[0]\n",
+        "aprovados = 0\n",
+        "reprovados = 0\n",
+        "\n",
+        "for n in notas:\n",
+        "    if n > maior:\n",
+        "        maior = n\n",
+        "    if n < menor:\n",
+        "        menor = n\n",
+        "\n",
+        "    if n >= 7:\n",
+        "        aprovados += 1\n",
+        "    else:\n",
+        "        reprovados += 1\n",
+        "\n",
+        "# Classificação\n",
+        "if media >= 9:\n",
+        "    classificacao = \"Excelente\"\n",
+        "elif media >= 7:\n",
+        "    classificacao = \"Bom\"\n",
+        "else:\n",
+        "    classificacao = \"Precisa melhorar\"\n",
+        "\n",
+        "# Situação\n",
+        "situacao = \"APROVADO\" if media >= 7 else \"REPROVADO\"\n",
+        "\n",
+        "# Saída\n",
+        "print(\"\\n--- RELATÓRIO ---\")\n",
+        "print(f\"Notas: {notas}\")\n",
+        "print(f\"Média: {media:.2f}\")\n",
+        "print(f\"Maior nota: {maior}\")\n",
+        "print(f\"Menor nota: {menor}\")\n",
+        "print(f\"Aprovados: {aprovados}\")\n",
+        "print(f\"Reprovados: {reprovados}\")\n",
+        "print(f\"Situação: {situacao}\")\n",
+        "print(f\"Classificação: {classificacao}\")"
+      ],
+      "metadata": {
+        "id": "OA0XeFPxFELo",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "9990c840-2c62-49d4-e408-4c62f75f4fe1"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Quantas notas você quer inserir? 3\n",
+            "Digite a 1ª nota (0 a 10): 6\n",
+            "Digite a 2ª nota (0 a 10): 7\n",
+            "Digite a 3ª nota (0 a 10): 8\n",
+            "\n",
+            "--- RELATÓRIO ---\n",
+            "Notas: [6.0, 7.0, 8.0]\n",
+            "Média: 7.00\n",
+            "Maior nota: 8.0\n",
+            "Menor nota: 6.0\n",
+            "Aprovados: 2\n",
+            "Reprovados: 1\n",
+            "Situação: APROVADO\n",
+            "Classificação: Bom\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
